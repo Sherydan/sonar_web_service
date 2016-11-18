@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="servicio_gpsService" targetNamespace="http://Rastreador/" xmlns:tns="http://Rastreador/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:fi="http://java.sun.com/xml/ns/wsit/2006/09/policy/fastinfoset/service" xmlns:tcp="http://java.sun.com/xml/ns/wsit/2006/09/policy/soaptcp/service" 
+ >
+    <message name="insertarDatos"/>
+    <message name="insertarDatosResponse"/>
+    <message name="consultarDatos"/>
+    <message name="consultarDatosResponse"/>
+    <message name="MostrarLatitud"/>
+    <message name="MostrarLatitudResponse"/>
+    <message name="MostrarLongitud"/>
+    <message name="MostrarLongitudResponse"/>
+    <portType name="servicio_gps">
+        <operation name="insertarDatos">
+            <input message="tns:insertarDatos"/>
+            <output message="tns:insertarDatosResponse"/>
+        </operation>
+        <operation name="consultarDatos">
+            <input message="tns:consultarDatos"/>
+            <output message="tns:consultarDatosResponse"/>
+        </operation>
+        <operation name="MostrarLatitud">
+            <input message="tns:MostrarLatitud"/>
+            <output message="tns:MostrarLatitudResponse"/>
+        </operation>
+        <operation name="MostrarLongitud">
+            <input message="tns:MostrarLongitud"/>
+            <output message="tns:MostrarLongitudResponse"/>
+        </operation>
+    </portType>
+    <binding name="servicio_gpsPortBinding" type="tns:servicio_gps">
+        <wsp:PolicyReference URI="#servicio_gpsPortBindingPolicy"/>
+        <operation name="insertarDatos">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="consultarDatos">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="MostrarLatitud">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="MostrarLongitud">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="servicio_gpsService">
+        <port name="servicio_gpsPort" binding="tns:servicio_gpsPortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="servicio_gpsPortBindingPolicy">
+        <wsp:ExactlyOne>
+            <wsp:All/>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
